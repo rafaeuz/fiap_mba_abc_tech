@@ -8,13 +8,14 @@ import java.util.Properties;
 
 @Component
 public class PropertiesComponent {
-    private Properties properties;
+    private final Properties properties;
 
     public PropertiesComponent() {
+        properties = new Properties();
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("application.yml");
 
         try {
-            properties.load(inputStream);
+            this.properties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }

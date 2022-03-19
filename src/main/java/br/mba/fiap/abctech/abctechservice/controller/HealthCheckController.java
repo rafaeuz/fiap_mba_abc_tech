@@ -16,11 +16,8 @@ import java.util.Properties;
 @RequestMapping("/")
 public class HealthCheckController {
 
-
-    private final PropertiesComponent propertiesComponent;
-
-    @Autowired
-    public HealthCheckController(PropertiesComponent propertiesComponent) {
+    private PropertiesComponent propertiesComponent;
+    public HealthCheckController(@Autowired PropertiesComponent propertiesComponent) {
         this.propertiesComponent = propertiesComponent;
     }
 
@@ -35,10 +32,9 @@ public class HealthCheckController {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("application.yml");
         try {
             properties.load(inputStream);
-        } catch (IOException e) {
+         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return ResponseEntity.ok(properties.getProperty("build.name") + " - " + properties.getProperty("build.version"));
     }
 
