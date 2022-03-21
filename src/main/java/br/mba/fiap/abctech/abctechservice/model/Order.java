@@ -35,4 +35,7 @@ public class Order {
     @JoinColumn(name = "end_order_location_id")
     private OrderLocation endOrderLocation;
 
+    public boolean hasMinAssists() { return services.size() > 0; }
+    public boolean exceedsMaxAssists () { return services.size() > 15; }
+
 }
