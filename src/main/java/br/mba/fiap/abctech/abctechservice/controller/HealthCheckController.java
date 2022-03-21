@@ -16,9 +16,7 @@ import java.util.Properties;
 @RequestMapping("/")
 public class HealthCheckController {
 
-    private PropertiesComponent propertiesComponent;
     public HealthCheckController(@Autowired PropertiesComponent propertiesComponent) {
-        this.propertiesComponent = propertiesComponent;
     }
 
     @GetMapping()
