@@ -9,7 +9,7 @@ phases:
       - mvn clean compile package
   post_build:
     commands:
-      - echo "Movendo os arquivos que serão feitos upload
+      - echo "Movendo os arquivos que serão feitos upload"
       - mv target/*.war ./ROOT.war
 artifacts:
   files:
