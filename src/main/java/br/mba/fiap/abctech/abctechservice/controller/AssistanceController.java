@@ -1,32 +1,31 @@
 package br.mba.fiap.abctech.abctechservice.controller;
 
-import br.mba.fiap.abctech.abctechservice.model.Assistance;
-import br.mba.fiap.abctech.abctechservice.service.AssistanceService;
+import br.mba.fiap.abctech.abctechservice.application.AssistanceApplication;
+import br.mba.fiap.abctech.abctechservice.application.dto.AssistDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3306")
 @RestController
 @RequestMapping("/assistance")
 public class AssistanceController {
 
-    private final AssistanceService assistanceService;
+    private final AssistanceApplication assistanceApplication;
+
     public AssistanceController (
             @Autowired
-                    AssistanceService assistanceService
+                    AssistanceApplication assistanceApplication
     ){
-        this.assistanceService = assistanceService;
+        this.assistanceApplication = assistanceApplication;
     }
 
     @GetMapping()
-    public ResponseEntity<List<Assistance>> getAssists() {
-        List<Assistance> list = this.assistanceService.getAssistsList();
+    public ResponseEntity<List<AssistDto>> getAssists() {
+        List<AssistDto> list = this.assistanceApplication.getAssists();
         return ResponseEntity.ok(list);
     }
 }
