@@ -8,7 +8,8 @@ spring:
     password: ${DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
+#      ddl-auto: update
 
 build.name: @project.name@
 build.version: @project.version@
