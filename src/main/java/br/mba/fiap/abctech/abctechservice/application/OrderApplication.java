@@ -1,7 +1,10 @@
 package br.mba.fiap.abctech.abctechservice.application;
 
 import br.mba.fiap.abctech.abctechservice.application.dto.OrderDto;
+import br.mba.fiap.abctech.abctechservice.application.dto.OrderResponseDto;
 
 public interface OrderApplication {
-    void createOrder(OrderDto orderDto) throws Exception;
+
+    public OrderResponseDto getOrder(Long id);
+    public void createOrder(OrderDto orderDto);
 }

@@ -49,4 +49,10 @@ public class  OrderServiceImpl implements OrderService {
     public List<Order> listOrdersByOperator(Long operatorId) {
         return null;
     }
+
+    @Override
+    public Order getOrderById(Long orderId) {
+        return this.orderRepository.findById(orderId).orElseThrow();
+    }
+
 }

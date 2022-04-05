@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -56,4 +57,5 @@ public class Order {
     public boolean exceedsMaxAssists () {
         return services.size() > 15;
     }
+
 }
