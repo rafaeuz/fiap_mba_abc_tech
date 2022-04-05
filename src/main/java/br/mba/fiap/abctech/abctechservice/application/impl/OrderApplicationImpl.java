@@ -36,6 +36,7 @@ public class OrderApplicationImpl implements OrderApplication {
                 assistDtoList,
                 this.getOrderLocationDtoFromOrderLocation(order.getStartOrderLocation()),
                 this.getOrderLocationDtoFromOrderLocation(order.getEndOrderLocation()));
+
         return orderDto;
    }
 
