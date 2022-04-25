@@ -9,21 +9,7 @@ import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- {
- "operator_id" : 0,
- "services" : [1 , 2, 3],
- "start" : {
- "latitude" : 0.0,
- "longitude" : 0.0,
- "datetime" : "2022-02-19 00:00:00"
- },
- "end" : {
- "latitude" : 0.0,
- "longitude" : 0.0,
- "datetime" : "2022-02-19 00:00:00"
- }
- */
+
 @Entity
 @Table(name = "orders")
 @Getter

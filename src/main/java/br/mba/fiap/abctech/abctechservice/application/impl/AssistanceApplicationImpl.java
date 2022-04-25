@@ -21,15 +21,13 @@ public class AssistanceApplicationImpl implements AssistanceApplication {
         this.assistanceService = assistanceService;
     }
 
-
     @Override
     public List<AssistDto> getAssists() {
         List<Assistance> listAssists = this.assistanceService.getAssistsList();
-        System.out.println("oi");
+//        System.out.println("teste");
         return listAssists.stream().map(
                 assistance -> new AssistDto(assistance.getId(), assistance.getName(), assistance.getDescription())
         ).collect(Collectors.toList());
-
     }
 }
 

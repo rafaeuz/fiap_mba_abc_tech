@@ -34,7 +34,6 @@ public class OrderServiceTest {
     @BeforeEach
     public void init() {
         MockitoAnnotations.openMocks(this);
-
         orderService = new OrderServiceImpl(orderRepository, assistanceRepository);
         when(assistanceRepository.findById(any())).thenReturn(Optional.of(new Assistance(1L, "Teste", "Teste Description")));
     }
@@ -59,7 +58,6 @@ public class OrderServiceTest {
     public void create_order_error_minimum() throws Exception {
         Order newOrder = new Order();
         newOrder.setOperatorId(1234L);
-
 
         Assertions.assertThrows(MinimumAssistsRequiredException.class, () -> orderService.saveOrder(newOrder, List.of()));
         verify(orderRepository, times(0)).save(newOrder);
