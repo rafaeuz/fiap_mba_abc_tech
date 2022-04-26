@@ -7,5 +7,4 @@ import java.util.List;
 public interface OrderService {
     void saveOrder(Order order, List<Long> arrayAssists);
     Order getOrderById(Long orderId);
-    List<Order> listOrdersByOperator(Long operatorId);
 }
