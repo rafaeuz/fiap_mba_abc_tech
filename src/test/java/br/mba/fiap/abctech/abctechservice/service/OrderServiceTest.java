@@ -1,5 +1,6 @@
 package br.mba.fiap.abctech.abctechservice.service;
 
+import br.mba.fiap.abctech.abctechservice.handler.exception.AssistanceNotFoundException;
 import br.mba.fiap.abctech.abctechservice.handler.exception.MaxAssistsException;
 import br.mba.fiap.abctech.abctechservice.handler.exception.MinimumAssistsRequiredException;
 import br.mba.fiap.abctech.abctechservice.model.Assistance;
@@ -69,6 +70,17 @@ public class OrderServiceTest {
         newOrder.setOperatorId(1234L);
 
         Assertions.assertThrows(MaxAssistsException.class, () -> orderService.saveOrder(newOrder, generate_mock_assistance(20)));
+        verify(orderRepository, times(0)).save(newOrder);
+    }
+
+    @Test
+    public void create_order_assistance_not_found() throws Exception {
+        Order newOrder = new Order();
+        newOrder.setOperatorId(1234L);
+
+        when(assistanceRepository.findById(any())).thenThrow(new AssistanceNotFoundException("Não foi possível encontrar assistência", "Tente outra assistência"));
+
+        Assertions.assertThrows(AssistanceNotFoundException.class, () -> orderService.saveOrder(newOrder, generate_mock_assistance(1)));
         verify(orderRepository, times(0)).save(newOrder);
     }
 
