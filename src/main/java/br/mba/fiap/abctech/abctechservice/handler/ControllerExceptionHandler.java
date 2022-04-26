@@ -1,5 +1,6 @@
 package br.mba.fiap.abctech.abctechservice.handler;
 
+import br.mba.fiap.abctech.abctechservice.handler.exception.AssistanceNotFoundException;
 import br.mba.fiap.abctech.abctechservice.handler.exception.MaxAssistsException;
 import br.mba.fiap.abctech.abctechservice.handler.exception.MinimumAssistsRequiredException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -27,7 +28,7 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(MaxAssistsException.class)
-    public ResponseEntity<ErrorMessageResponse> errorMaxAssisException(MaxAssistsException ex){
+    public ResponseEntity<ErrorMessageResponse> errorMaxAssistRequired(MaxAssistsException ex){
         ErrorMessageResponse error = new ErrorMessageResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 new Date(),
@@ -52,6 +53,16 @@ public class ControllerExceptionHandler {
         return new ResponseEntity<ErrorMessageResponse>(error, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(AssistanceNotFoundException.class)
+    public ResponseEntity<ErrorMessageResponse> assistanceNotFoundException(AssistanceNotFoundException ex) {
+        ErrorMessageResponse error = new ErrorMessageResponse(
+          HttpStatus.BAD_REQUEST.value(),
+          new Date(),
+          ex.getMessage(),
+          ex.getDescription()
+        );
 
+        return new ResponseEntity<ErrorMessageResponse>(error, HttpStatus.NOT_FOUND);
+    }
 }
 
